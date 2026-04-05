@@ -14,6 +14,14 @@ build/
 venv/
 .venv/
 env/
+prepcoach/
+
+# Plans (local only)
+PLAN.md
+PLAN.txt
+
+# Test output
+tests/output.txt
 
 # Vector DB (local, large files)
 chroma_db/
