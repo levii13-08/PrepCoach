@@ -1,0 +1,25 @@
+Job Title: Full Stack Engineer
+Company: StartupX
+Experience: 3-5 years
+
+Requirements:
+- Proficiency in JavaScript/TypeScript (Node.js + React/Next.js)
+- Experience with Python or Go for backend services
+- Strong knowledge of SQL and NoSQL databases
+- Experience with cloud services (AWS, GCP)
+- Understanding of RESTful APIs and WebSocket
+- Familiarity with Docker and basic DevOps
+- Knowledge of authentication and security best practices
+- Experience with agile methodologies
+
+Responsibilities:
+- Design and build full-stack features end to end
+- Develop and maintain APIs and database schemas
+- Build responsive frontend interfaces
+- Deploy and monitor applications in production
+- Participate in architecture and design decisions
+
+Nice to Have:
+- Experience with serverless architecture
+- Knowledge of real-time systems
+- Mobile development experience (React Native)

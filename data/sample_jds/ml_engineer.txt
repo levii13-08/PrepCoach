@@ -1,0 +1,25 @@
+Job Title: Machine Learning Engineer
+Company: AI Solutions Inc
+Experience: 2-4 years
+
+Requirements:
+- Strong Python programming skills
+- Experience with ML frameworks (PyTorch, TensorFlow, scikit-learn)
+- Solid understanding of ML algorithms (regression, classification, clustering, neural networks)
+- Experience with data preprocessing and feature engineering
+- Knowledge of NLP or Computer Vision techniques
+- Familiarity with MLOps tools (MLflow, Weights & Biases)
+- Experience with cloud ML services (SageMaker, Vertex AI)
+- Strong statistics and probability fundamentals
+
+Responsibilities:
+- Develop and deploy ML models for production
+- Conduct experiments and improve model performance
+- Build data pipelines for training and inference
+- Collaborate with data scientists and software engineers
+- Monitor model performance and retrain as needed
+
+Nice to Have:
+- Experience with LLMs and transformer architectures
+- Knowledge of distributed training
+- Publications or Kaggle competitions

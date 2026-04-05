@@ -1,0 +1,27 @@
+Job Title: Software Development Engineer
+Company: TechNova Systems
+Experience: 2-4 years
+
+Requirements:
+- Strong proficiency in at least one programming language (Java, Python, C++, or Go)
+- Solid understanding of data structures and algorithms
+- Experience with RESTful APIs and backend frameworks
+- Familiarity with relational and NoSQL databases (PostgreSQL, MongoDB)
+- Knowledge of software design patterns and system design principles
+- Experience with version control systems (Git)
+- Understanding of CI/CD pipelines and automated testing
+- Familiarity with cloud platforms (AWS, GCP, Azure)
+
+Responsibilities:
+- Design and develop scalable software systems
+- Implement backend services and APIs
+- Write clean, maintainable, and efficient code
+- Participate in code reviews and architectural discussions
+- Debug and resolve production issues
+- Collaborate with cross-functional teams including product and design
+- Optimize applications for performance and scalability
+
+Nice to Have:
+- Experience with containerization (Docker, Kubernetes)
+- Knowledge of distributed systems
+- Experience contributing to open source projects

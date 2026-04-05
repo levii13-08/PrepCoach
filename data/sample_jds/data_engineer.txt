@@ -1,0 +1,24 @@
+Job Title: Data Engineer
+Company: DataPipeline Corp
+Experience: 2-4 years
+
+Requirements:
+- Strong SQL and Python programming skills
+- Experience with ETL/ELT frameworks (Apache Spark, Airflow, dbt)
+- Knowledge of data warehousing (Snowflake, BigQuery, Redshift)
+- Experience with streaming platforms (Kafka, Kinesis)
+- Familiarity with cloud data services
+- Understanding of data modeling and schema design
+- Experience with version control and CI/CD for data pipelines
+
+Responsibilities:
+- Design and build scalable data pipelines
+- Optimize data warehouse queries and costs
+- Ensure data quality and reliability
+- Build real-time and batch processing systems
+- Collaborate with data scientists and analysts
+
+Nice to Have:
+- Experience with Delta Lake or Iceberg
+- Knowledge of data governance tools
+- Experience with graph databases

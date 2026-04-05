@@ -1,0 +1,25 @@
+Job Title: DevOps Engineer
+Company: CloudFirst Inc
+Experience: 2-5 years
+
+Requirements:
+- Strong Linux administration skills
+- Experience with CI/CD tools (Jenkins, GitHub Actions, GitLab CI)
+- Proficiency with Docker and Kubernetes
+- Experience with cloud platforms (AWS/GCP/Azure)
+- Knowledge of Infrastructure as Code (Terraform, Ansible)
+- Scripting skills (Bash, Python)
+- Understanding of networking and security fundamentals
+- Experience with monitoring tools (Prometheus, Grafana, ELK)
+
+Responsibilities:
+- Design and maintain CI/CD pipelines
+- Manage cloud infrastructure and Kubernetes clusters
+- Automate deployment and scaling processes
+- Monitor system health and respond to incidents
+- Implement security best practices
+
+Nice to Have:
+- Experience with service mesh (Istio)
+- Knowledge of GitOps practices
+- AWS/GCP certifications

@@ -1,0 +1,27 @@
+Job Title: Data Scientist
+Company: Insight Analytics Lab
+Experience: 2-4 years
+
+Requirements:
+- Strong programming skills in Python or R
+- Experience with machine learning libraries (scikit-learn, TensorFlow, PyTorch)
+- Solid understanding of statistics and probability
+- Experience with data preprocessing and feature engineering
+- Knowledge of SQL for querying and manipulating data
+- Experience with data visualization tools (Tableau, Power BI, matplotlib, seaborn)
+- Familiarity with model evaluation and validation techniques
+- Understanding of A/B testing and experimental design
+
+Responsibilities:
+- Analyze large datasets to extract actionable insights
+- Build predictive and statistical models
+- Perform exploratory data analysis
+- Communicate results through dashboards and reports
+- Collaborate with engineering teams to deploy machine learning models
+- Develop data-driven solutions for business problems
+- Monitor model performance and iterate on improvements
+
+Nice to Have:
+- Experience with deep learning frameworks
+- Knowledge of big data technologies (Spark, Hadoop)
+- Experience working with cloud data platforms (BigQuery, Snowflake)

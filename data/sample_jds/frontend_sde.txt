@@ -1,0 +1,25 @@
+Job Title: Frontend Software Engineer
+Company: WebTech Solutions
+Experience: 2-4 years
+
+Requirements:
+- Strong proficiency in JavaScript/TypeScript
+- Experience with React.js or Vue.js or Angular
+- Solid understanding of HTML5, CSS3, and responsive design
+- Knowledge of state management (Redux, Zustand, Pinia)
+- Experience with RESTful APIs and GraphQL
+- Familiarity with testing frameworks (Jest, Cypress)
+- Understanding of web performance optimization
+- Experience with Git and agile development
+
+Responsibilities:
+- Build responsive and performant user interfaces
+- Implement UI components following design specifications
+- Write unit and integration tests
+- Optimize web application performance
+- Collaborate with designers and backend engineers
+
+Nice to Have:
+- Experience with Next.js or Nuxt.js
+- Knowledge of web accessibility (WCAG)
+- Experience with animation libraries (Framer Motion, GSAP)

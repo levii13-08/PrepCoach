@@ -1,0 +1,25 @@
+Job Title: Software Development Engineer - Backend
+Company: Tech Corp
+Experience: 2-5 years
+
+Requirements:
+- Strong proficiency in Python, Java, or Go
+- Experience with RESTful APIs and microservices architecture
+- Solid understanding of data structures and algorithms
+- Experience with SQL and NoSQL databases (PostgreSQL, MongoDB, Redis)
+- Familiarity with cloud platforms (AWS/GCP/Azure)
+- Knowledge of containerization (Docker, Kubernetes)
+- Understanding of CI/CD pipelines
+- Experience with version control (Git)
+
+Responsibilities:
+- Design and develop scalable backend services
+- Write clean, maintainable, and well-tested code
+- Participate in code reviews and technical discussions
+- Optimize application performance and reliability
+- Collaborate with frontend and DevOps teams
+
+Nice to Have:
+- Experience with message queues (Kafka, RabbitMQ)
+- Knowledge of system design patterns
+- Open source contributions
