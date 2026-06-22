@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://prepcoach.local/schemas/interview_question.json",
+  "title": "InterviewQuestion",
+  "type": "object",
+  "required": [
+    "id",
+    "question",
+    "topic",
+    "difficulty",
+    "role_tags",
+    "question_type",
+    "expected_points",
+    "source"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "question": { "type": "string", "minLength": 10 },
+    "topic": {
+      "type": "string",
+      "enum": [
+        "ml",
+        "ml_theory",
+        "deep_learning",
+        "mlops",
+        "swe",
+        "dsa",
+        "oop",
+        "system_design",
+        "ai",
+        "llms",
+        "rag",
+        "agents"
+      ]
+    },
+    "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"] },
+    "role_tags": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["MLE", "AI", "DS", "SWE", "GENAI"] },
+      "minItems": 1
+    },
+    "question_type": {
+      "type": "string",
+      "enum": ["theory", "coding", "system_design", "behavioral", "ml", "swe"]
+    },
+    "expected_points": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "source": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": false
+}

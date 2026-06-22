@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://prepcoach.local/schemas/job_description.json",
+  "title": "JobDescription",
+  "type": "object",
+  "required": ["id", "role", "role_title", "skills", "requirements", "source", "collected_at"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "role": { "type": "string", "enum": ["MLE", "AI", "DS", "SWE", "GENAI"] },
+    "role_title": { "type": "string", "minLength": 1 },
+    "skills": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "requirements": { "type": "string", "minLength": 50 },
+    "seniority": { "type": "string", "enum": ["junior", "mid", "senior", "staff"] },
+    "company": { "type": "string" },
+    "source": { "type": "string", "minLength": 1 },
+    "source_url": { "type": "string", "format": "uri" },
+    "collected_at": { "type": "string", "format": "date" }
+  },
+  "additionalProperties": false
+}

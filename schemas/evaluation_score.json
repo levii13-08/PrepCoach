@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://prepcoach.local/schemas/evaluation_score.json",
+  "title": "EvaluationScore",
+  "type": "object",
+  "required": ["correctness", "completeness", "clarity", "alignment", "total", "feedback"],
+  "properties": {
+    "correctness": { "type": "number", "minimum": 0, "maximum": 10 },
+    "completeness": { "type": "number", "minimum": 0, "maximum": 10 },
+    "clarity": { "type": "number", "minimum": 0, "maximum": 10 },
+    "alignment": { "type": "number", "minimum": 0, "maximum": 10 },
+    "total": { "type": "number", "minimum": 0, "maximum": 10 },
+    "feedback": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": false
+}
