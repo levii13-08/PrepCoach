@@ -1,0 +1,63 @@
+SYSTEM DESIGN: WEB CRAWLER
+Source: https://github.com/donnemartin/system-design-primer
+
+=== USE CASES ===
+- Service crawls a list of urls, generates reverse index of words to pages, generates titles and snippets
+- User inputs a search term and sees relevant pages with titles and snippets
+- High availability required
+
+=== CONSTRAINTS ===
+- 1 billion links to crawl
+- Average refresh rate: once per week, 4 billion links crawled per month
+- Average stored size per web page: 500 KB
+- 100 billion searches per month
+- 2 PB of stored page content per month
+- 72 PB of stored page content in 3 years
+- 1,600 write requests per second
+- 40,000 search requests per second
+
+=== HIGH LEVEL DESIGN ===
+Components: Crawler Service, NoSQL Database (for links and crawled data), Reverse Index Service, Document Service, Query API, Web Server
+
+=== CORE COMPONENTS ===
+
+Crawler Service:
+- Takes top ranked page link to crawl
+- Checks crawled_links in NoSQL Database for similar page signature
+- If similar page exists, reduce priority (prevents cycles)
+- Else, crawl the link, add jobs to Reverse Index Service and Document Service queues
+- Generate page signature, remove from links_to_crawl, insert into crawled_links
+
+Handling Duplicates:
+- Remove duplicate urls using MapReduce
+- Detect duplicate content using Jaccard index or cosine similarity
+
+PagesDataStore abstraction:
+- add_link_to_crawl(url), remove_link_to_crawl(url), reduce_priority_link_to_crawl(url)
+- extract_max_priority_page(), insert_crawled_link(url, signature), crawled_similar(signature)
+
+Determining Refresh Timing:
+- Pages crawled regularly for freshness
+- Default period: one week
+- Popular sites refreshed more frequently
+
+Search Flow:
+- Client sends request to Web Server (reverse proxy)
+- Query API server parses query (remove markup, break into terms, fix typos, normalize)
+- Reverse Index Service finds matching documents, ranks results
+- Document Service returns titles and snippets
+- REST API: curl https://search.com/api/v1/search?query=hello+world
+
+=== SCALING ===
+- Memory Cache (Redis/Memcached) for popular queries
+- Sharding and federation for Reverse Index Service and Document Service
+- DNS lookup caching in Crawler Service
+- Connection pooling for multiple open connections
+- UDP for performance boost
+- Sufficient bandwidth for crawling
+
+=== KEY TRADE-OFFS ===
+- NoSQL vs SQL for link storage
+- In-memory cache vs disk-based storage
+- Push vs pull CDN for static content
+- Synchronous vs asynchronous queue processing

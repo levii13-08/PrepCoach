@@ -1,0 +1,134 @@
+SYSTEM DESIGN PRIMER - KEY CONCEPTS
+Source: https://github.com/donnemartin/system-design-primer
+
+=== SCALABILITY ===
+- Vertical scaling: scaling up a single server on more expensive hardware
+- Horizontal scaling: scaling out using commodity machines, more cost efficient and higher availability
+
+=== PERFORMANCE vs SCALABILITY ===
+- Performance problem: system is slow for a single user
+- Scalability problem: system is fast for a single user but slow under heavy load
+
+=== LATENCY vs THROUGHPUT ===
+- Latency: time to perform some action or produce some result
+- Throughput: number of actions or results per unit of time
+- Aim for maximal throughput with acceptable latency
+
+=== CAP THEOREM ===
+In a distributed system, you can only support two of:
+- Consistency: every read receives the most recent write or an error
+- Availability: every request receives a response, without guarantee it contains the most recent version
+- Partition Tolerance: system continues to operate despite network failures
+Networks aren't reliable, so you need partition tolerance. Trade off between consistency and availability.
+
+CP (Consistency + Partition Tolerance): Waiting for response from partitioned node may timeout. Good for atomic reads/writes.
+AP (Availability + Partition Tolerance): Returns most readily available version, might not be latest. Good for eventual consistency.
+
+=== CONSISTENCY PATTERNS ===
+- Weak consistency: after a write, reads may or may not see it (memcached, VoIP, video chat)
+- Eventual consistency: after a write, reads will eventually see it within milliseconds (DNS, email)
+- Strong consistency: after a write, reads will see it. Data replicated synchronously (file systems, RDBMS)
+
+=== AVAILABILITY PATTERNS ===
+Fail-over:
+- Active-passive: heartbeats between active and passive server; passive takes over if heartbeat interrupted
+- Active-active: both servers manage traffic, spreading load between them
+
+Replication: master-slave (master serves reads/writes, slaves serve reads) and master-master (both serve reads/writes)
+
+Availability in numbers:
+- 99.9% (three 9s): 8h 45min downtime per year
+- 99.99% (four 9s): 52min 35s downtime per year
+
+=== DOMAIN NAME SYSTEM (DNS) ===
+Translates domain names to IP addresses. Hierarchical with authoritative servers at top level.
+Record types: NS (name server), MX (mail exchange), A (name to IP), CNAME (name to another name)
+Services: CloudFlare, Route 53. Routing methods: weighted round robin, latency-based, geolocation-based.
+
+=== CONTENT DELIVERY NETWORK (CDN) ===
+Globally distributed network of proxy servers serving content from locations closer to the user.
+- Push CDNs: receive new content when changes occur. Good for small traffic or infrequently updated content
+- Pull CDNs: grab new content from server when first user requests it. Good for heavy traffic
+Disadvantages: cost, stale content, URL changes needed.
+
+=== LOAD BALANCER ===
+Distributes incoming client requests to computing resources.
+Benefits: prevents requests to unhealthy servers, prevents overloading, eliminates single point of failure.
+SSL termination, session persistence.
+Layer 4: looks at transport layer (source/destination IP, ports)
+Layer 7: looks at application layer (header, message, cookies)
+
+=== REVERSE PROXY (WEB SERVER) ===
+Centralizes internal services and provides unified interfaces to the public.
+Benefits: increased security, scalability, SSL termination, compression, caching, static content serving.
+
+=== APPLICATION LAYER ===
+Separating web layer from application layer allows independent scaling.
+Microservices: suite of independently deployable, small, modular services.
+Service Discovery: Consul, Etcd, Zookeeper help services find each other.
+
+=== DATABASE ===
+
+RDBMS (ACID):
+- Atomicity: each transaction is all or nothing
+- Consistency: any transaction brings database from one valid state to another
+- Isolation: concurrent transactions have same results as serial
+- Durability: once committed, it remains so
+
+Scaling techniques:
+1. Master-slave replication: master serves reads/writes, slaves serve reads
+2. Master-master replication: both masters serve reads/writes
+3. Federation (functional partitioning): splits databases by function
+4. Sharding: distributes data across different databases, each manages a subset
+5. Denormalization: improves read performance at expense of write performance
+6. SQL tuning: benchmarking and profiling to uncover bottlenecks
+
+NoSQL types:
+- Key-value store: Redis, Memcached, DynamoDB
+- Document store: MongoDB, CouchDB
+- Wide column store: Cassandra, HBase
+- Graph database: Neo4j, JanusGraph
+
+=== CACHE ===
+Types: client caching, CDN caching, web server caching, database caching, application caching
+Update strategies:
+- Cache-aside: application reads from cache, on miss loads from DB and stores in cache
+- Write-through: data written to cache and DB at same time
+- Write-behind (write-back): data written to cache first, asynchronously written to DB
+- Refresh-ahead: cache automatically refreshes entries before they expire
+
+=== ASYNCHRONISM ===
+- Message queues: store messages for processing
+- Task queues: manage tasks for background processing
+- Back pressure: control flow to prevent system overload
+
+=== COMMUNICATION ===
+- TCP: connection-oriented, reliable, ordered delivery
+- UDP: connectionless, best-effort delivery, lower latency
+- RPC: remote procedure call for internal communications
+- REST: HTTP-based API for external communications
+
+=== LATENCY NUMBERS ===
+L1 cache reference: 0.5 ns
+Branch mispredict: 5 ns
+L2 cache reference: 7 ns
+Mutex lock/unlock: 100 ns
+Main memory reference: 100 ns
+Compress 1K bytes with Zippy: 10,000 ns (10 us)
+Send 2K bytes over 1 Gbps network: 20,000 ns (20 us)
+Read 1 MB sequentially from memory: 250,000 ns (250 us)
+Read 1 MB sequentially from SSD: 1,000,000 ns (1 ms)
+Disk seek: 10,000,000 ns (10 ms)
+Read 1 MB sequentially from disk: 20,000,000 ns (20 ms)
+Send packet CA->Netherlands->CA: 150,000,000 ns (150 ms)
+
+=== SYSTEM DESIGN INTERVIEW APPROACH ===
+Step 1: Outline use cases, constraints, and assumptions
+Step 2: Create a high level design
+Step 3: Design core components
+Step 4: Scale the design
+
+=== KEYS TO REMEMBER ===
+- Everything is a trade-off
+- Start simple, benchmark, profile, identify bottlenecks, address them, repeat
+- Back-of-the-envelope calculations help estimate scale requirements

@@ -1,0 +1,12 @@
+{"filename": "system_design_primer.txt", "topic": "system_design", "title": "System Design Primer", "source": "curated", "license": "internal"}
+{"filename": "design_twitter.txt", "topic": "system_design", "title": "Design Twitter", "source": "curated", "license": "internal"}
+{"filename": "design_web_crawler.txt", "topic": "system_design", "title": "Design Web Crawler", "source": "curated", "license": "internal"}
+{"filename": "ml_interview_guide.md", "topic": "pytorch", "title": "ML Interview Guide", "source": "curated", "license": "internal"}
+{"filename": "cs_fundamentals.md", "topic": "python", "title": "CS Fundamentals", "source": "curated", "license": "internal"}
+{"filename": "python_patterns.md", "topic": "python", "title": "Python Interview Patterns", "source": "curated", "license": "internal"}
+{"filename": "sql_analytics.md", "topic": "sql", "title": "SQL Analytics Review", "source": "curated", "license": "internal"}
+{"filename": "transformer_notes.md", "topic": "transformers", "title": "Transformer Notes", "source": "curated", "license": "internal"}
+{"filename": "rag_playbook.md", "topic": "rag", "title": "RAG Playbook", "source": "curated", "license": "internal"}
+{"filename": "langgraph_workflows.md", "topic": "langgraph", "title": "LangGraph Workflows", "source": "curated", "license": "internal"}
+{"filename": "mlops_checklist.md", "topic": "mlops", "title": "MLOps Checklist", "source": "curated", "license": "internal"}
+{"filename": "vector_databases.md", "topic": "vector_databases", "title": "Vector Databases Overview", "source": "curated", "license": "internal"}

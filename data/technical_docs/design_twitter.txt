@@ -1,0 +1,76 @@
+SYSTEM DESIGN: TWITTER TIMELINE AND SEARCH
+Source: https://github.com/donnemartin/system-design-primer
+
+=== USE CASES ===
+- User posts a tweet, service pushes to followers with notifications
+- User views user timeline (activity from user)
+- User views home timeline (activity from followed people)
+- User searches keywords
+- High availability
+
+=== CONSTRAINTS ===
+- 100 million active users
+- 500 million tweets per day (15 billion per month)
+- Each tweet averages fanout of 10 deliveries
+- 5 billion total tweets delivered on fanout per day
+- 250 billion read requests per month
+- 10 billion searches per month
+- Size per tweet: tweet_id (8 bytes), user_id (32 bytes), text (140 bytes), media (10 KB avg) = ~10 KB
+- 150 TB new tweet content per month, 5.4 PB in 3 years
+- 100,000 read requests/second, 6,000 tweets/second
+- 60,000 tweets delivered on fanout per second
+- 4,000 search requests/second
+
+=== HIGH LEVEL DESIGN ===
+Components: Web Server (reverse proxy), Write API, Read API, Search API, Fan Out Service, User Graph Service, Timeline Service, Tweet Info Service, User Info Service, Search Index Service, Notification Service, SQL Database, NoSQL Database, Memory Cache, Object Store, Queue
+
+=== CORE COMPONENTS ===
+
+Posting a Tweet:
+- Client posts to Web Server, forwarded to Write API
+- Write API stores tweet in user's timeline on SQL database
+- Write API contacts Fan Out Service
+- Fan Out Service queries User Graph Service for followers (cached)
+- Stores tweet in home timeline of followers in Memory Cache (O(n) operation)
+- Stores tweet in Search Index Service for fast searching
+- Stores media in Object Store
+- Notification Service sends push notifications asynchronously via Queue
+
+Memory Cache Structure (Redis list):
+- Entries: tweet_id (8 bytes), user_id (8 bytes), meta (1 byte)
+
+Viewing Home Timeline:
+- Client requests home timeline via Web Server
+- Read API contacts Timeline Service
+- Timeline Service gets data from Memory Cache (O(1))
+- Queries Tweet Info Service with multiget for tweet details (O(n))
+- Queries User Info Service with multiget for user details (O(n))
+
+Viewing User Timeline:
+- Read API retrieves user timeline from SQL Database
+
+Searching Keywords:
+- Client sends search request to Web Server
+- Search API contacts Search Service
+- Search Service parses query (remove markup, break into terms, fix typos, normalize caps, convert to boolean)
+- Queries Search Cluster (Lucene) using scatter gather
+- Merges, ranks, sorts, returns results
+
+=== SCALING ===
+- Fanout Service bottleneck: users with millions of followers take minutes for fanout
+  - Mitigation: re-order tweets at serve time
+  - Alternative: don't fanout for highly-followed users, search instead
+- Keep only several hundred tweets per home timeline in Memory Cache
+- Only active users' timelines in Memory Cache (rebuild from SQL if inactive 30 days)
+- Store only one month of tweets in Tweet Info Service
+- Store only active users in User Info Service
+- Search Cluster keeps tweets in memory for low latency
+- SQL scaling: federation, sharding, denormalization, SQL tuning
+- Consider NoSQL for some data
+
+=== KEY TRADE-OFFS ===
+- Fanout on write vs fanout on read
+- SQL vs NoSQL for different data types
+- In-memory cache vs persistent storage
+- Synchronous fanout vs async queue processing
+- Full search index vs in-memory search
