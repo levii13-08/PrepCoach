@@ -1,0 +1,14 @@
+langchain-groq
+langchain-huggingface
+langchain-community
+chromadb
+sentence-transformers
+python-dotenv
+fastapi
+streamlit
+uvicorn
+rank_bm25
+pydantic>=2.0
+pypdf
+langgraph
+langchain-core
