@@ -291,28 +291,6 @@ JSON Schema contracts live in `schemas/`; Pydantic mirrors in `app/schemas/`.
 
 ---
 
-## Implementation status
-
-| Phase | Scope | Status |
-|-------|-------|--------|
-| 0 | Architecture and schemas | Complete |
-| 1 | Data collection and validation | Complete |
-| 2 | Core RAG engine (Chroma + embeddings) | Complete |
-| 3 | Hybrid retrieval, multi-query, rerank | Complete (benchmarks pending) |
-| 4 | Structured question generation | Complete (quality eval pending) |
-| 5 | LangGraph multi-agent interview loop | Complete |
-| 6 | Rubric-based evaluation engine | Complete (correlation eval pending) |
-| 7 | Adaptive difficulty and topic routing | Complete |
-| 8 | Skill gap analysis | Complete |
-| 9 | Coaching and learning roadmap | Complete |
-| 10 | SQLite session persistence | Complete |
-| 11 | FastAPI + Streamlit surfaces | Complete |
-| 11 | Docker / docker-compose packaging | Pending |
-
-Formal retrieval benchmarks, parse-rate evaluation, and human correlation studies are intentionally deferred. See [docs/implementation_plan.md](docs/implementation_plan.md) for the full risk register and next steps.
-
----
-
 ## Known limitations
 
 - **No auth or billing** — single-user local/demo use
